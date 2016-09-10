@@ -15,7 +15,9 @@ public class financialCalculator {
 		 * outputs:
 		 * presentValue (float)-the present value of an annuity to comfortably retire 
 		 * bought on the last day of work
-		 * monthlySavings (float)- amount needed to save each day to buy said annuity  */
+		 * monthlySavings (float)- amount needed to save each day to buy said annuity 
+		 * any single letter variable (byte) is a place holder for a loop with the exception of j and k
+		 * j and k (long) are indexes on the sum function of the present value formula */
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter the expected social secuity:  ");
 		double socialSecurity = input.nextDouble();
@@ -96,8 +98,8 @@ public class financialCalculator {
 		}
 		interestRate = interestRate/1200;
 		double presentValue = 0 ;
-		long j = 0 ;
-		while (j < yearsRetired){
+		long j = 1 ;
+		while (j <= yearsRetired){
 			presentValue = presentValue + requiredIncome/(Math.pow((1.0 + retiredRate), j));
 		j++;
 		}
@@ -109,6 +111,6 @@ public class financialCalculator {
 			k++;
 		}
 		monthlySavings = presentValue/interestMultiplier;
-		System.out.println("You need to save " + presentValue + " in total, and " + monthlySavings + " a month");
+		System.out.println("You need to save " + String.format( "%.2f", presentValue ) + " in total, and" + String.format( "%.2f", monthlySavings ) + " a month." );
 		}
 }
